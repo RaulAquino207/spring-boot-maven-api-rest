@@ -8,11 +8,11 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.studies</groupId>
-	<artifactId>virtualstore</artifactId>
+	<groupId>com.studies</groupId>
+	<artifactId>apirest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>virtualstore</name>
-	<description>Project for Spring Boot</description>
+	<name>apirest</name>
+	<description>API REST project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

@@ -1,4 +1,4 @@
-package br.com.studies.virtualstore.enums;
+package com.studies.apirest.enums;
 
 import lombok.Getter;
 

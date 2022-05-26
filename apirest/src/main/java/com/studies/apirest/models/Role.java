@@ -1,4 +1,4 @@
-package br.com.studies.virtualstore.models;
+package com.studies.apirest.models;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import br.com.studies.virtualstore.enums.RoleEnum;
+import com.studies.apirest.enums.RoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

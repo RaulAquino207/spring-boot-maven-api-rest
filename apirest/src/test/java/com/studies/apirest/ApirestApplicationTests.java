@@ -1,10 +1,10 @@
-package br.com.studies.virtualstore;
+package com.studies.apirest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class VirtualstoreApplicationTests {
+class ApirestApplicationTests {
 
 	@Test
 	void contextLoads() {

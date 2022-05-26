@@ -1,4 +1,4 @@
-package br.com.studies.virtualstore.models;
+package com.studies.apirest.models;
 
 import java.io.Serializable;
 import java.util.HashSet;
