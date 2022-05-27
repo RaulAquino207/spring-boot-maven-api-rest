@@ -20,11 +20,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity(name = "role")
 @Table(name = "role")
 @NoArgsConstructor @AllArgsConstructor
-@SequenceGenerator(name = "seq_role", sequenceName = "seq_role", allocationSize = 1, initialValue = 1)
 public class Role {
 
 	@Id 
@@ -34,7 +34,7 @@ public class Role {
 	@Enumerated(EnumType.STRING)
 	@Getter @Setter private RoleEnum name;
 	
-	@ManyToMany(mappedBy = "roles", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "roles", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private Set<Person> persons = new HashSet<>();
 
 }
