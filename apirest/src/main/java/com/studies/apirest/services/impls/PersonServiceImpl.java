@@ -3,16 +3,15 @@ package com.studies.apirest.services.impls;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.studies.apirest.models.Person;
 import com.studies.apirest.repositories.PersonRepository;
 import com.studies.apirest.services.PersonService;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
-//@RequiredArgsConstructor
 public class PersonServiceImpl implements PersonService{
 
 	@Autowired
@@ -20,13 +19,21 @@ public class PersonServiceImpl implements PersonService{
 	
 	@Override
 	public Person create(Person person) {
-		// TODO Auto-generated method stub
-		return null;
+		return personRepository.save(person);
 	}
 
 	@Override
-	public List<Person> findAll() {
-		return personRepository.findAll();
+	public ResponseEntity<Object> findAll() {		
+//		return personRepository.findAll();
+		List<Person> dbPersons = personRepository.findAll();
+		if(dbPersons.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(dbPersons, HttpStatus.OK);
+	}
+
+	public Object findById(Long id) {
+		return personRepository.findById(id);
 	}
 
 }

@@ -2,8 +2,10 @@ package com.studies.apirest.models;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,13 +27,12 @@ import lombok.EqualsAndHashCode.Exclude;
 @Entity(name = "person")
 @Table(name = "person")
 @NoArgsConstructor @AllArgsConstructor
-@SequenceGenerator(name = "seq_person", sequenceName = "seq_person", allocationSize = 1, initialValue = 1)
 public class Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_person")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter private Long id;
 	
 	@Column (name = "name")
@@ -44,12 +45,12 @@ public class Person implements Serializable {
 	@Column(name = "password")
 	@Getter @Setter private String password;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			name = "persons_roles",
-			joinColumns = @JoinColumn(name = "person_id"),
-			inverseJoinColumns = @JoinColumn(name = "role_id")
-	)
-	private Set<Role> roles = new HashSet<>();
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "person_role",
+            joinColumns = {@JoinColumn(name = "person_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+    )
+	@Getter @Setter private Set<Role> roles = new HashSet<>();
 	
 }
